@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Matheus</h1>
 <h3 align="center">I'm a frontend developer from Brazil</h3>
 
-- 🔭 I’m currently working on [Exiva Moe Res](https://exivamoeres.netlify.ap)
+- 🔭 I’m currently working on [Exiva Moe Res](https://exivamoeres.netlify.app)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
