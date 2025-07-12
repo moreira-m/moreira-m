@@ -1,8 +1,6 @@
 <h1 align="center">Hi 👋, I'm Matheus</h1>
 <h3 align="center">I'm a frontend developer from Brazil</h3>
 
-- 🔭 I’m currently working on [Exiva Moe Res](https://exivamoeres.netlify.app)
-
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://linkedin.com/in/matheus-moreira-1688a7216/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="matheus-moreira-1688a7216/" height="30" width="40" /></a>
