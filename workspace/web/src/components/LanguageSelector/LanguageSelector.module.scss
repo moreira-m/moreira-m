@@ -1,0 +1,58 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.languageSelector {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-md;
+    background-color: transparent;
+    transition: background-color $transition-fast;
+
+    &:hover {
+        background-color: $bg-secondary;
+    }
+
+    .langButton {
+        @include button-reset;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $text-secondary;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-sm;
+        transition: all $transition-fast;
+        position: relative;
+
+        &:hover {
+            color: $primary;
+        }
+
+        &.active {
+            color: $primary;
+            font-weight: $font-weight-bold;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 20px;
+                height: 2px;
+                background-color: $primary;
+                border-radius: $border-radius-full;
+            }
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    .divider {
+        color: $text-light;
+        font-size: $font-size-sm;
+        user-select: none;
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "nav": {
+        "about": "About",
+        "projects": "Projects",
+        "skills": "Skills",
+        "contact": "Contact"
+    },
+    "theme": {
+        "light": "Light theme",
+        "dark": "Dark theme",
+        "toggle": "Toggle theme"
+    },
+    "language": {
+        "en": "English",
+        "pt": "Portuguese",
+        "switch": "Switch language"
+    },
+    "hero": {
+        "greeting": "Hi, I'm"
+    },
+    "about": {
+        "yearsOfExperience": "Years of Experience"
+    },
+    "projects": {
+        "title": "Featured Projects",
+        "subtitle": "Check out some of my recent work",
+        "viewAll": "View All Projects",
+        "viewLive": "View Live",
+        "github": "GitHub"
+    },
+    "skills": {
+        "title": "Skills & Technologies"
+    },
+    "contact": {
+        "title": "Get In Touch",
+        "subtitle": "Have a question or want to work together? Feel free to reach out!",
+        "nameLabel": "Name",
+        "namePlaceholder": "Your name",
+        "emailLabel": "Email",
+        "emailPlaceholder": "your.email@example.com",
+        "messageLabel": "Message",
+        "messagePlaceholder": "Your message...",
+        "sendButton": "Send Message",
+        "sending": "Sending...",
+        "successMessage": "Message sent successfully! I'll get back to you soon.",
+        "errorMessage": "Oops! Something went wrong. Please try again."
+    },
+    "footer": {
+        "tagline": "Building amazing digital experiences",
+        "connect": "Connect",
+        "copyright": "All rights reserved.",
+        "builtWith": "Built with"
+    }
+}

@@ -1,0 +1,110 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.projectCard {
+    background-color: $bg-primary;
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    transition: all $transition-base;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+        box-shadow: $shadow-xl;
+        transform: translateY(-4px);
+    }
+
+    .imageWrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 60%; // 5:3 aspect ratio
+        background-color: $bg-gray;
+        overflow: hidden;
+    }
+
+    .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-slow;
+    }
+
+    &:hover .image {
+        transform: scale(1.05);
+    }
+
+    .content {
+        padding: $spacing-lg;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            padding: $spacing-xl;
+        }
+    }
+
+    .title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $text-primary;
+        margin-bottom: $spacing-sm;
+
+        @include tablet {
+            font-size: $font-size-2xl;
+        }
+    }
+
+    .summary {
+        font-size: $font-size-base;
+        color: $text-secondary;
+        line-height: 1.6;
+        margin-bottom: $spacing-md;
+        flex: 1;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-md;
+    }
+
+    .tag {
+        font-size: $font-size-xs;
+        padding: $spacing-xs $spacing-sm;
+        background-color: rgba($primary, 0.1);
+        color: $primary;
+        border-radius: $border-radius-sm;
+        font-weight: $font-weight-medium;
+
+        @include tablet {
+            font-size: $font-size-sm;
+        }
+    }
+
+    .links {
+        display: flex;
+        gap: $spacing-md;
+        margin-top: auto;
+    }
+
+    .link {
+        font-size: $font-size-sm;
+        color: $primary;
+        font-weight: $font-weight-semibold;
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-xs;
+        transition: color $transition-fast;
+
+        &:hover {
+            color: $primary-dark;
+        }
+    }
+}

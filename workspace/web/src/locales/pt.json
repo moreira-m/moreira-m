@@ -1,0 +1,54 @@
+{
+    "nav": {
+        "about": "Sobre",
+        "projects": "Projetos",
+        "skills": "Habilidades",
+        "contact": "Contato"
+    },
+    "theme": {
+        "light": "Tema claro",
+        "dark": "Tema escuro",
+        "toggle": "Alternar tema"
+    },
+    "language": {
+        "en": "Inglês",
+        "pt": "Português",
+        "switch": "Mudar idioma"
+    },
+    "hero": {
+        "greeting": "Olá, eu sou"
+    },
+    "about": {
+        "yearsOfExperience": "Anos de Experiência"
+    },
+    "projects": {
+        "title": "Projetos em Destaque",
+        "subtitle": "Confira alguns dos meus trabalhos recentes",
+        "viewAll": "Ver Todos os Projetos",
+        "viewLive": "Ver Online",
+        "github": "GitHub"
+    },
+    "skills": {
+        "title": "Habilidades e Tecnologias"
+    },
+    "contact": {
+        "title": "Entre em Contato",
+        "subtitle": "Tem alguma pergunta ou quer trabalhar junto? Fique à vontade para entrar em contato!",
+        "nameLabel": "Nome",
+        "namePlaceholder": "Seu nome",
+        "emailLabel": "E-mail",
+        "emailPlaceholder": "seu.email@exemplo.com",
+        "messageLabel": "Mensagem",
+        "messagePlaceholder": "Sua mensagem...",
+        "sendButton": "Enviar Mensagem",
+        "sending": "Enviando...",
+        "successMessage": "Mensagem enviada com sucesso! Retornarei em breve.",
+        "errorMessage": "Ops! Algo deu errado. Por favor, tente novamente."
+    },
+    "footer": {
+        "tagline": "Construindo experiências digitais incríveis",
+        "connect": "Conecte-se",
+        "copyright": "Todos os direitos reservados.",
+        "builtWith": "Feito com"
+    }
+}

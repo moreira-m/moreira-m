@@ -1,0 +1,150 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: $z-index-sticky;
+    background-color: rgba($bg-primary, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: $shadow-sm;
+
+    .container {
+        @include container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: $spacing-lg;
+        padding-bottom: $spacing-lg;
+
+        @include tablet {
+            padding-top: $spacing-xl;
+            padding-bottom: $spacing-xl;
+        }
+    }
+
+    .logo {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $text-primary;
+
+        @include tablet {
+            font-size: $font-size-2xl;
+        }
+
+        span {
+            color: $primary;
+        }
+    }
+
+    .nav {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            gap: $spacing-xl;
+        }
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+
+        @include tablet {
+            gap: $spacing-md;
+        }
+    }
+
+    .navLink {
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        color: $text-secondary;
+        transition: color $transition-fast;
+        position: relative;
+
+        &:hover,
+        &.active {
+            color: $primary;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $primary;
+            transition: width $transition-base;
+        }
+
+        &:hover::after,
+        &.active::after {
+            width: 100%;
+        }
+    }
+
+    .mobileMenuButton {
+        @include button-reset;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: $spacing-sm;
+
+        @include tablet {
+            display: none;
+        }
+
+        .bar {
+            width: 24px;
+            height: 2px;
+            background-color: $text-primary;
+            transition: all $transition-base;
+        }
+
+        &.open {
+            .bar:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+        }
+    }
+
+    .mobileMenu {
+        display: none;
+        padding: $spacing-xl;
+        background-color: $bg-primary;
+        border-top: 1px solid $border-color;
+
+        &.open {
+            display: block;
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+        .mobileNav {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-lg;
+        }
+
+        .navLink {
+            font-size: $font-size-lg;
+            padding: $spacing-md 0;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

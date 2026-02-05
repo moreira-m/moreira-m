@@ -1,0 +1,36 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.themeToggle {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-md;
+    background-color: transparent;
+    color: $text-secondary;
+    transition: all $transition-fast;
+    position: relative;
+
+    &:hover {
+        background-color: $bg-secondary;
+        color: $primary;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        transition: transform $transition-base;
+    }
+
+    &:hover .icon {
+        transform: rotate(15deg);
+    }
+}

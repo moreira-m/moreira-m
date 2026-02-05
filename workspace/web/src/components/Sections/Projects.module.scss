@@ -1,0 +1,46 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.projects {
+    @include section-spacing;
+    background-color: $bg-primary;
+
+    .container {
+        @include container;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: $spacing-3xl;
+    }
+
+    .title {
+        color: $text-primary;
+        margin-bottom: $spacing-md;
+    }
+
+    .subtitle {
+        font-size: $font-size-lg;
+        color: $text-secondary;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-xl;
+        margin-bottom: $spacing-3xl;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: $spacing-2xl;
+        }
+
+        @include desktop {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .viewAll {
+        text-align: center;
+    }
+}

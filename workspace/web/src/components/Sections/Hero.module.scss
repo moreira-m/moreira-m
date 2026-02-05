@@ -1,0 +1,145 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.hero {
+    @include section-spacing;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, $bg-primary 0%, $bg-secondary 100%);
+
+    .container {
+        @include container;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-3xl;
+
+        @include desktop {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .textContent {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-lg;
+
+        @include desktop {
+            max-width: 50%;
+        }
+    }
+
+    .greeting {
+        font-size: $font-size-lg;
+        color: $primary;
+        font-weight: $font-weight-semibold;
+        margin-bottom: 0;
+    }
+
+    .name {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        color: $text-primary;
+        margin-bottom: $spacing-sm;
+
+        @include tablet {
+            font-size: $font-size-4xl;
+        }
+
+        @include desktop {
+            font-size: $font-size-5xl;
+        }
+
+        @include desktop-wide {
+            font-size: $font-size-6xl;
+        }
+    }
+
+    .title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+        color: $text-secondary;
+        margin-bottom: $spacing-md;
+
+        @include tablet {
+            font-size: $font-size-2xl;
+        }
+
+        @include desktop {
+            font-size: $font-size-3xl;
+        }
+    }
+
+    .bio {
+        font-size: $font-size-base;
+        color: $text-secondary;
+        line-height: 1.8;
+        margin-bottom: $spacing-xl;
+
+        @include tablet {
+            font-size: $font-size-lg;
+        }
+    }
+
+    .imageWrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include desktop {
+            max-width: 45%;
+        }
+    }
+
+    .image {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid $primary;
+        box-shadow: $shadow-xl;
+
+        @include tablet {
+            width: 350px;
+            height: 350px;
+        }
+
+        @include desktop {
+            width: 400px;
+            height: 400px;
+        }
+
+        @include desktop-wide {
+            width: 450px;
+            height: 450px;
+        }
+    }
+
+    .illustrationPlaceholder {
+        width: 280px;
+        height: 280px;
+        background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($primary, 0.3) 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-size-6xl;
+
+        @include tablet {
+            width: 350px;
+            height: 350px;
+        }
+
+        @include desktop {
+            width: 400px;
+            height: 400px;
+        }
+    }
+}
