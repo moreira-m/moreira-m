@@ -1,38 +1,14 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useActionState } from 'react'
+import { sendEmail } from '@/actions/contact'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Button from '@/components/UI/Button'
 import styles from './Contact.module.scss'
 
 export default function Contact() {
     const { t } = useLanguage()
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    })
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault()
-        setStatus('loading')
-
-        // Here you would typically send the form data to an API endpoint
-        // For now, we'll just simulate a successful submission
-        try {
-            // Simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-
-            setStatus('success')
-            setFormData({ name: '', email: '', message: '' })
-
-            // Reset success message after 5 seconds
-            setTimeout(() => setStatus('idle'), 5000)
-        } catch (error) {
-            setStatus('error')
-        }
-    }
+    const [state, formAction, isPending] = useActionState(sendEmail, { success: false, message: '' })
 
     return (
         <section className={styles.contact} id="contact">
@@ -44,7 +20,7 @@ export default function Contact() {
                     </p>
                 </div>
 
-                <form className={styles.form} onSubmit={handleSubmit}>
+                <form className={styles.form} action={formAction}>
                     <div className={styles.formGroup}>
                         <label htmlFor="name" className={styles.label}>
                             {t.contact.nameLabel}
@@ -52,10 +28,9 @@ export default function Contact() {
                         <input
                             type="text"
                             id="name"
+                            name="name"
                             className={styles.input}
                             placeholder={t.contact.namePlaceholder}
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             required
                         />
                     </div>
@@ -67,10 +42,9 @@ export default function Contact() {
                         <input
                             type="email"
                             id="email"
+                            name="email"
                             className={styles.input}
                             placeholder={t.contact.emailPlaceholder}
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             required
                         />
                     </div>
@@ -81,10 +55,9 @@ export default function Contact() {
                         </label>
                         <textarea
                             id="message"
+                            name="message"
                             className={styles.textarea}
                             placeholder={t.contact.messagePlaceholder}
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             required
                         />
                     </div>
@@ -92,19 +65,19 @@ export default function Contact() {
                     <Button
                         type="submit"
                         size="large"
-                        disabled={status === 'loading'}
+                        disabled={isPending}
                         className={styles.submitButton}
                     >
-                        {status === 'loading' ? t.contact.sending : t.contact.sendButton}
+                        {isPending ? t.contact.sending : t.contact.sendButton}
                     </Button>
 
-                    {status === 'success' && (
+                    {state.success && (
                         <div className={`${styles.message} ${styles.success}`}>
                             {t.contact.successMessage}
                         </div>
                     )}
 
-                    {status === 'error' && (
+                    {!state.success && state.message === 'error' && (
                         <div className={`${styles.message} ${styles.error}`}>
                             {t.contact.errorMessage}
                         </div>
