@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 import { setLanguage as setLanguageAction } from '@/app/actions'
+import LoadingOverlay from '@/components/UI/LoadingOverlay'
 
 // Definir o idioma suportado
 type Language = 'pt' | 'en'
@@ -13,7 +14,7 @@ import en from '@/locales/en.json'
 interface LanguageContextType {
     language: Language
     setLanguage: (lang: Language) => void
-    t: typeof pt // todas as traduções têm a mesma estrutura
+    t: typeof pt
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -21,10 +22,10 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
     const [language, setLanguageState] = useState<Language>('pt') // Default to pt initially to match server fallback
     const [isClient, setIsClient] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         setIsClient(true)
-        // Check localStorage and cookies on mount
         const savedLanguage = localStorage.getItem('language') as Language | null
 
         const cookieLanguage = document.cookie
@@ -32,20 +33,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
             .find(row => row.startsWith('language='))
             ?.split('=')[1] as Language | undefined
 
-        // Precedence: Cookie > LocalStorage (because Server matches Cookie)
         if (cookieLanguage === 'pt' || cookieLanguage === 'en') {
             setLanguageState(cookieLanguage)
         } else if (savedLanguage === 'pt' || savedLanguage === 'en') {
             setLanguageState(savedLanguage)
-            // Sync cookie if missing using Server Action
             setLanguageAction(savedLanguage)
         }
     }, [])
 
     const handleSetLanguage = async (newLang: Language) => {
-        setLanguageState(newLang)
-        localStorage.setItem('language', newLang)
-        await setLanguageAction(newLang)
+        setIsLoading(true)
+        try {
+            setLanguageState(newLang)
+            localStorage.setItem('language', newLang)
+            await setLanguageAction(newLang)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const translations = { pt, en }
@@ -53,6 +57,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+            {isLoading && <LoadingOverlay />}
             {children}
         </LanguageContext.Provider>
     )
