@@ -34,7 +34,6 @@ export default function Footer({ socialLinks }: FooterProps) {
                         <div className={styles.logo}>
                             <span>&lt;</span>Portfolio<span>/&gt;</span>
                         </div>
-                        <p className={styles.tagline}>{t.footer.tagline}</p>
                     </div>
 
                     {socialLinks && socialLinks.length > 0 && (
