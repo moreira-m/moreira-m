@@ -8,7 +8,6 @@ interface FooterProps {
     socialLinks: SocialLink[]
 }
 
-// Map platform names to emoji icons
 const platformIcons: Record<string, string> = {
     github: '💻',
     linkedin: '💼',

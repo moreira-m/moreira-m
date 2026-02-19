@@ -5,7 +5,7 @@ import '@/styles/globals.scss'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
-  title: 'Developer Portfolio',
+  title: 'Matheus Moreira',
   description: 'Portfolio showcasing my work and skills',
 }
 
